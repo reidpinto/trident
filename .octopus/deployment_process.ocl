@@ -13,7 +13,7 @@ step "calculate-deployment-mode" {
 
 step "run-runbook-to-configure-sql-server" {
     condition = "Variable"
-    name = "Create Trident Database"
+    name = "Create Trident Database1"
     properties = {
         Octopus.Step.ConditionVariableExpression = "#{unless Octopus.Deployment.Error}#{Octopus.Action[Calculate Deployment Mode].Output.RunOnDeploy}#{/unless}"
     }
