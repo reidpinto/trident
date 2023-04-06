@@ -1,0 +1,25 @@
+variable "ConnectionStrings:Database" {
+    value "#{Project.Connection.String}" {}
+}
+
+variable "Project.Connection.String" {
+    value "Server=#{Project.Database.Server.Name};Integrated Security=true;Database=#{Project.Database.Name}" {}
+}
+
+variable "Project.Database.Name" {
+    value "Trident_#{Tenant.Common.Abbreviation}" {
+        environment = ["production"]
+    }
+
+    value "Trident_#{Tenant.Common.Abbreviation}_#{Octopus.Environment.Name}" {
+        description = ""
+    }
+}
+
+variable "Project.Database.Report.Path" {
+    value "C:\\DatabaseReports#{Tenant.Common.Abbreviation}#{Octopus.Environment.Name}" {}
+}
+
+variable "Project.Database.Server.Name" {
+    value "(localdb)\\MSSQLLocalDB" {}
+}
